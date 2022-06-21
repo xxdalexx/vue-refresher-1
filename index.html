@@ -2,19 +2,19 @@
 <html lang="en" class="h-full">
 <head>
     <meta charset="UTF-8">
-    <title>Lists</title>
+    <title>Lists with Computed Properties</title>
     <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="h-full grid place-items-center">
     <div id="app">
-        <section v-show="assignments.filter(a => ! a.complete).length">
+        <section v-show="inProgressAssignments.length">
             <h2 class="font-bold mb-2">In Progress</h2>
 
             <ul>
                 <li
-                    v-for="assignment in assignments.filter(a => ! a.complete)"
+                    v-for="assignment in inProgressAssignments"
                     :key="assignment.id"
                 >
                     <label>
@@ -24,12 +24,13 @@
                 </li>
             </ul>
         </section>
-        <section class="mt-8" v-show="assignments.filter(a => a.complete).length">
+
+        <section class="mt-8" v-show="completedAssignments.length">
             <h2 class="font-bold mb-2">Completed</h2>
 
             <ul>
                 <li
-                    v-for="assignment in assignments.filter(a => a.complete)"
+                    v-for="assignment in completedAssignments"
                     :key="assignment.id"
                 >
                     <label>
@@ -62,6 +63,16 @@
                             complete: false
                         }
                     ]
+                }
+            },
+
+            computed: {
+                inProgressAssignments() {
+                    return this.assignments.filter(assignment => ! assignment.complete)
+                },
+
+                completedAssignments() {
+                    return this.assignments.filter(assignment => assignment.complete)
                 }
             }
         };
