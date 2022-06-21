@@ -3,20 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
 </head>
 
 <body>
     <div id="app">
-        {{ greeting }}
+        <p>
+            <input type="text" v-model="greeting" />
+        </p>
+        <p>
+            {{ greeting }}
+        </p>
     </div>
 
     <script>
         Vue.createApp({
-            data () {
+            data() {
                 return {
                     greeting: 'Hello World.'
                 };
+            },
+
+            mounted() {
+                setTimeout(() => {
+                    this.greeting = 'Changed';
+                }, 3000);
             }
         }).mount('#app');
     </script>
