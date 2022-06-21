@@ -8,13 +8,16 @@ export default {
     },
 
     template: `
-        <section v-show="assignments.length">
-            <h2 class="font-bold mb-2">
-                {{ title }}
-                <span>
-                    ({{ assignments.length }})
-                </span>
-            </h2>
+        <section v-show="show && assignments.length" class="w-60">
+            <div class="flex justify-between items-start">
+                <h2 class="font-bold mb-2">
+                    {{ title }}
+                    <span>
+                        ({{ assignments.length }})
+                    </span>
+                </h2>
+                <button @click="show = false" v-show="canHide">&times;</button>
+            </div>
             
             <assignment-tags 
                 v-model="currentTag"
@@ -29,17 +32,24 @@ export default {
                 >
                 </assignment>
             </ul>
+            <slot></slot>
+        
         </section>
     `,
 
     props: {
         assignments: Array,
         title: String,
+        canHide: {
+            type: Boolean,
+            default: false
+        }
     },
 
     data() {
         return {
-            currentTag: 'All'
+            currentTag: 'All',
+            show: true
         }
     },
 
