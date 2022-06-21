@@ -15,28 +15,17 @@ export default {
         </section>
     `,
 
+    created() {
+        fetch('http://localhost:3000/assignments')
+            .then(response => response.json())
+            .then(assignments => {
+                this.assignments = assignments;
+            });
+    },
+
     data() {
         return {
-            assignments: [
-                {
-                    id: 1,
-                    name: 'Finish Project',
-                    complete: false,
-                    tag: 'Math'
-                },
-                {
-                    id: 2,
-                    name: 'Read Chapter 4',
-                    complete: false,
-                    tag: 'Reading'
-                },
-                {
-                    id: 3,
-                    name: 'Turn in Homework',
-                    complete: false,
-                    tag: 'Science'
-                }
-            ],
+            assignments: [],
         }
     },
 

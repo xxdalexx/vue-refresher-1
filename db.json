@@ -17,6 +17,12 @@
       "name": "Turn in Homework",
       "complete": false,
       "tag": "Science"
+    },
+    {
+      "id": 4,
+      "name": "Wake Up",
+      "complete": true,
+      "tag": "Life"
     }
   ]
 }
