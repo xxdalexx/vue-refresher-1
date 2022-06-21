@@ -21,17 +21,20 @@ export default {
                 {
                     id: 1,
                     name: 'Finish Project',
-                    complete: false
+                    complete: false,
+                    tag: 'Math'
                 },
                 {
                     id: 2,
                     name: 'Read Chapter 4',
-                    complete: false
+                    complete: false,
+                    tag: 'Reading'
                 },
                 {
                     id: 3,
                     name: 'Turn in Homework',
-                    complete: false
+                    complete: false,
+                    tag: 'Science'
                 }
             ],
         }
